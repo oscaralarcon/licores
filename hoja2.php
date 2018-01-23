@@ -40,6 +40,39 @@
             </div>
         </nav>
 
-        <--! pon aqui el codigo y obvio borra esta apertura y cierre de comentario-->
+        <?php
+            include("funciones/funciones.php");
+            $listadoLicores=listarLicores();
+        ?>
+
+        <div class="datagrid">
+          <h2>Detalles</h2>
+            <table border="1">
+            <thead>
+                <tr>
+                    <th>NOMBRE</th>
+                    <th>DESCRIPCION</th>
+                    <th>CATEGORIA</th>
+                </tr>   
+            </thead>
+                <h3>
+                    <tbody>
+                        <?php
+                            while($row=mysql_fetch_array($listadoLicores)){
+                                echo "<tr>";
+                                    echo "<td>".$row['dlicores_nombre']."</td>";
+                                    echo "<td>".$row['dlicores_descripcion']."</td>";
+                                    echo "<td>".$row['dlicores_categoria_id']."</td>";
+                                    //echo "<td><a href='index.php?page=formulariopro&id="
+                                    //.$row['pro_id']."'>Modificar</a></td>";
+                                    //echo "<td><a href='index.php?page=eliminarpro&id="
+                                    //.$row['pro_id']."'>Eliminar</a></td>";
+                                echo "</tr>";
+                            }
+                        ?>
+                    </tbody>
+                </h3>
+            </table>
+        </div>
     </body>
 </html>
